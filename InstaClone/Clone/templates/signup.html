@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Instagram Clone</title>
+    <style>
+        body
+        {background-color:#fafafa;
+        margin:0px;}
+
+        form
+        {font-size: 40px;
+        text-align: center;
+        padding:6%;}
+
+        .navbar
+        {height:50px;
+        background: radial-gradient(ellipse at 70% 70%,#ee583f 8%,#d92d77 42%,#bd3381 58%);}
+
+        h1{margin:0px;
+        color:white;
+        font-size:27px;
+        padding:5px 0px 0px 31px;}
+
+        .formbar
+        {    background-color: white;
+             margin: 5% 0% 0% 57%;
+             width: 25%;
+             }
+
+         h6
+         {margin: 0px;
+          font-size: 21px;
+          color:#999;}
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1> Instagram Clone</h1>
+        <h3 style="text-align:right;">{{today}}</h3>
+    </div>
+
+    <article>
+
+        <div class="formbar">
+
+    <form method="post">
+        {% csrf_token %}
+        {% load staticfiles %}
+        <h2 style="font-size:40px;">InstaClone</h2>
+        <h6>Sign up to see photos and videos from your friends.</h6>
+        <div>
+            <input id="username" type="text" name="username" placeholder="Username" value={{ username }}>
+        </div>
+
+        <div>
+            <input id="name" type="text" name="name" placeholder="Full Name" value={{ name }}>
+        </div>
+
+        <div>
+            <input id="email" type="text" name="email" placeholder="Email" value={{ email }}>
+        </div>
+
+        <div>
+            <input id="password" type="password" name="password" placeholder="Password" value={{ password }}>
+        </div>
+        <input type="submit" value="Sign Up">
+    </form>
+
+    <div style="text-align:center;"><h3>Already a user?</h3><a href="login/">Login</a> </div>
+        </div>
+    </article>
+</body>
+</html>

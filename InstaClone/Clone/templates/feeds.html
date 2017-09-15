@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>your Feed</title>
+        <style>
+            body{margin:0px;}
+            .navbar {
+                height: 50px;
+                background: radial-gradient(ellipse at 70% 70%,#ee583f 8%,#d92d77 42%,#bd3381 58%);
+            }
+            .brand{color:white;
+                padding-top:10px;
+                padding-left:15px;}
+            table{width:117%;}
+            #post{font-size:25px;}
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div>
+            <table>
+                <tr>
+                    <td><h1 class="brand">Welcome To InstaClone</h1></td>
+                    <td><button id="post" type="button" onclick="window.location.href='post'">Post</button></td>
+                </tr>
+            </table>
+            </div>
+        </nav>
+
+        <div class="home">
+            <table>
+                <tr>
+                    <td class="1" bgcolor="#fafafa" width="29%"></td>
+                    <td class="2">
+            {% for post in posts %}
+            <h3>
+                Posted by: {{ post.user.username }}
+            </h3>
+            <img src="{{ post.image_url }}" height=500 width=500><br />
+        <span>
+          {{ post.caption }}
+        </span>
+        <div style="display:inline-block">
+            {{ post.like_count }} like this
+        </div>
+        <form method="POST" action="/like/">
+          {% csrf_token %}
+          <input type="hidden" name="post" value="{{ post.id }}">
+          <input type="submit" class="btn btn-default" value="Like">
+        </form>
+        <form method="POST" action="/comment/">
+            {% csrf_token %}
+            <input type="hidden" name="post" value="{{ post.id }}" >
+            <input type="text" name="comment_text" id="comment_text" placeholder="Make a comment.." value="{{ comment_text }}">
+            {{ comment_text }}
+            <input type="submit" class="btn-default btn" value="Comment">
+        </form>
+        <div>
+        {% for comment in post.comments %}
+
+        <p>
+          {{ comment.user.username }}
+          {{ comment.created_on }}: {{ comment.comment_text }}
+        </p>
+
+      {% endfor %}
+
+      </div>
+        {% endfor %}
+                    </td>
+                    <td class="3" bgcolor="#fafafa" width="43%"></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

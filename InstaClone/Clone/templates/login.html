@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <style>
+        .login
+        {text-align:center;
+        margin:10px;}
+        input
+        {font-size:25px;}
+    </style>
+</head>
+<body bgcolor="#44B78B">
+<h2 align="center">Successfully signed up! Please continue to login!</h2>
+<div class="login">
+    <form method="post">
+        {% csrf_token %}
+        <div style="margin:30px;">
+
+            <input id="username" type="text" placeholder="UserName" name="username">
+        </div>
+        <div style="margin:30px;">
+
+            <input id="password" type="password" placeholder="password" name="password">
+        </div>
+        <input type="submit" value="Login">
+    </form>
+    <div style="text-align:center;"><h3>New user? please click on signup!</h3><a href="signup/">Signup</a> </div>
+</div>
+</body>
+</html>
